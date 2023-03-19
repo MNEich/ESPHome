@@ -1,0 +1,39 @@
+esphome:
+  name: mobilestation
+# Example configuration entry
+esp32:
+  board: nodemcu-32s
+# Network Settings
+wifi:
+  ssid: WLAN_MN
+  password: b952516391da733f5f5a13b717
+logger:
+  level: DEBUG
+# MQTT Settings
+mqtt:
+  broker: 10.1.0.2
+dallas:
+  - pin: GPIO23
+    update_interval: 300s
+# Example configuration entry with 2 sensors and filter
+sensor:
+  - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
+    name: "WiFi Signal dB"
+    id: wifi_signal_db
+    update_interval: 60s
+    entity_category: "diagnostic"
+
+  - platform: copy # Reports the WiFi signal strength in %
+    source_id: wifi_signal_db
+    name: "WiFi Signal Percent"
+    filters:
+      - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
+    unit_of_measurement: "Signal %"
+    entity_category: "diagnostic"
+
+  - platform: dallas
+    address: 0x3601203325ae3028
+    name: "Temp1"
+  - platform: dallas
+    address: 0x72012032b527b428
+    name: "Temp2"
