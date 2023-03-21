@@ -9,12 +9,15 @@ wifi:
   password: b952516391da733f5f5a13b717
 logger:
   level: DEBUG
+ota:
+  safe_mode: true
+  password: ma3400nau
 # MQTT Settings
 mqtt:
   broker: 10.1.0.2
 dallas:
   - pin: GPIO23
-    update_interval: 300s
+    update_interval: 30s
 # Example configuration entry with 2 sensors and filter
 sensor:
   - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
@@ -37,3 +40,21 @@ sensor:
   - platform: dallas
     address: 0x72012032b527b428
     name: "Temp2"
+  - platform: dallas
+    address: 0x7e3ce104576ff028
+    name: "Temp3"
+  - platform: dallas
+    address: 0x7e3ce1045751ec28
+    name: "Temp4"
+  - platform: dallas
+    address: 0x1e3ce104570f9628
+    name: "Temp5"
+  - platform: dallas
+    address: 0x6e3ce104571dce28
+    name: "Temp6"
+  - platform: dallas
+    address: 0xcb3ce10457ec4128
+    name: "Temp7"
+  - platform: dallas
+    address: 0x953ce10457ba3b28
+    name: "Temp8"
