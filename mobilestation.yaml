@@ -17,7 +17,7 @@ mqtt:
   broker: 10.1.0.2
 dallas:
   - pin: GPIO23
-    update_interval: 30s
+    update_interval: 60s
 # Example configuration entry with 2 sensors and filter
 sensor:
   - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
